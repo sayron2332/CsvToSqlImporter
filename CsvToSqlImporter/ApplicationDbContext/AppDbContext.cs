@@ -6,10 +6,12 @@ namespace CsvToSqlImporter.ApplicationDbContext
 {
     public class AppDbContext : DbContext
     {
-      
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=AppTripsDb;Trusted_Connection=True;TrustServerCertificate=True;");
 
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+           options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=AppTripsDb;Trusted_Connection=True;TrustServerCertificate=True;");
+           options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
